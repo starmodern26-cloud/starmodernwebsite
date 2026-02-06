@@ -1,24 +1,41 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import Image from "next/image"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare } from "lucide-react"
-import { servicesData } from "@/lib/services-data"
+import type React from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  CheckCircle2,
+  MessageSquare,
+} from "lucide-react";
+import { servicesData } from "@/lib/services-data";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["P.O.Box 489 | Upper Mulago Hill Road", "New Mulago Main Gate Next to First Pharmacy"],
+    details: [
+      "P.O.Box 489 | Upper Mulago Hill Road",
+      "New Mulago Main Gate Next to First Pharmacy",
+    ],
   },
   {
     icon: Phone,
@@ -35,7 +52,7 @@ const contactInfo = [
     title: "Working Hours",
     details: ["Mon - Sat: 7:00 AM - 9:00 PM", "Sunday: 8:00 AM - 2:00 PM"],
   },
-]
+];
 
 const branches = [
   {
@@ -56,7 +73,7 @@ const branches = [
     phone: "+1 (234) 567-8903",
     hours: "Mon-Fri: 7AM-6PM, Sat: 8AM-2PM",
   },
-]
+];
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -65,25 +82,33 @@ export default function ContactPage() {
     phone: "",
     service: "",
     message: "",
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmitted(false)
-      setFormState({ name: "", email: "", phone: "", service: "", message: "" })
-    }, 5000)
-  }
+      setIsSubmitted(false);
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    }, 5000);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
     <main className="min-h-screen">
@@ -105,9 +130,12 @@ export default function ContactPage() {
               <MessageSquare className="w-4 h-4" />
               Contact Us
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Get in Touch With Us</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
+              Get in Touch With Us
+            </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Have questions about our services or want to book a test? We are here to help.
+              Have questions about our services or want to book a test? We are
+              here to help.
             </p>
           </div>
         </div>
@@ -126,7 +154,9 @@ export default function ContactPage() {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
                     <info.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
                   </div>
-                  <h3 className="text-base font-semibold text-card-foreground mb-2">{info.title}</h3>
+                  <h3 className="text-base font-semibold text-card-foreground mb-2">
+                    {info.title}
+                  </h3>
                   {info.details.map((detail, i) => (
                     <p key={i} className="text-sm text-muted-foreground">
                       {detail}
@@ -157,8 +187,12 @@ export default function ContactPage() {
                     <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                       <CheckCircle2 className="w-8 h-8 text-primary" />
                     </div>
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">Message Sent!</h3>
-                    <p className="text-sm text-muted-foreground">Thank you for contacting us.</p>
+                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                      Message Sent!
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Thank you for contacting us.
+                    </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -214,13 +248,20 @@ export default function ContactPage() {
                         </Label>
                         <Select
                           value={formState.service}
-                          onValueChange={(value) => setFormState((prev) => ({ ...prev, service: value }))}
+                          onValueChange={(value) =>
+                            setFormState((prev) => ({
+                              ...prev,
+                              service: value,
+                            }))
+                          }
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="general">General Inquiry</SelectItem>
+                            <SelectItem value="general">
+                              General Inquiry
+                            </SelectItem>
                             {servicesData.map((service) => (
                               <SelectItem key={service.id} value={service.id}>
                                 {service.title}
@@ -272,7 +313,7 @@ export default function ContactPage() {
               <Card className="border-border overflow-hidden">
                 <div className="aspect-[16/10] relative">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.74996448979!2d32.5743260737194!3d0.3353895639991775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb0026d0c99d%3A0xedc9b5619a74dd74!2sStar%20Modern%20Diagnostics!5e0!3m2!1sen!2sug!4v1770384963328!5m2!1sen!2sug"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -288,9 +329,12 @@ export default function ContactPage() {
               {/* Quick Contact Options */}
               <Card className="border-primary/20 bg-primary/5">
                 <CardContent className="p-5">
-                  <h3 className="text-base font-semibold text-card-foreground mb-3">Need Urgent Assistance?</h3>
+                  <h3 className="text-base font-semibold text-card-foreground mb-3">
+                    Need Urgent Assistance?
+                  </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    For emergency testing or urgent inquiries, call our 24/7 helpline.
+                    For emergency testing or urgent inquiries, call our 24/7
+                    helpline.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-2">
                     <Button
@@ -302,7 +346,11 @@ export default function ContactPage() {
                         Call 24/7 Helpline
                       </a>
                     </Button>
-                    <Button asChild variant="outline" className="rounded-full flex-1 bg-transparent text-sm">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="rounded-full flex-1 bg-transparent text-sm"
+                    >
                       <a href="mailto:emergency@starmodern.com">
                         <Mail className="mr-2 w-4 h-4" />
                         Email Us
@@ -323,8 +371,12 @@ export default function ContactPage() {
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
               Our Locations
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Visit Our Branches</h2>
-            <p className="text-muted-foreground">We have multiple locations for your convenience.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+              Visit Our Branches
+            </h2>
+            <p className="text-muted-foreground">
+              We have multiple locations for your convenience.
+            </p>
           </div>
 
           {/* Centered branches with flex + justify-center */}
@@ -348,7 +400,9 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="text-base font-semibold text-card-foreground mb-2">{branch.name}</h3>
+                  <h3 className="text-base font-semibold text-card-foreground mb-2">
+                    {branch.name}
+                  </h3>
                   <div className="space-y-1.5 text-sm text-muted-foreground">
                     <p className="flex items-start gap-2">
                       <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -391,5 +445,5 @@ export default function ContactPage() {
 
       <Footer />
     </main>
-  )
+  );
 }
