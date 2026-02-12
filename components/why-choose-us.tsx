@@ -1,14 +1,23 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { CheckCircle2, Clock, Award, Users, Microscope, HeartPulse } from "lucide-react"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import {
+  CheckCircle2,
+  Clock,
+  Award,
+  Users,
+  Microscope,
+  HeartPulse,
+} from "lucide-react";
+import OurModernLaboratoryImg from "../public/Logo22.png";
 
 const features = [
   {
     icon: Award,
     title: "Accredited Laboratory",
-    description: "ISO 15189 certified with internationally recognized standards.",
+    description:
+      "ISO 15189 certified with internationally recognized standards.",
   },
   {
     icon: Microscope,
@@ -35,31 +44,34 @@ const features = [
     title: "Affordable Pricing",
     description: "Quality diagnostics at competitive pricing.",
   },
-]
+];
 
 export function WhyChooseUs() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
       { threshold: 0.1 },
-    )
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 lg:py-24 bg-secondary overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="py-16 lg:py-24 bg-secondary overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -71,14 +83,15 @@ export function WhyChooseUs() {
               Your Health Deserves the Best Diagnostic Care
             </h2>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              At Star Modern Diagnostic Laboratory, we combine cutting-edge technology with compassionate care to
-              deliver accurate and timely diagnostic results.
+              At Star Modern Diagnostic Laboratory, we combine cutting-edge
+              technology with compassionate care to deliver accurate and timely
+              diagnostic results.
             </p>
 
             <div className="relative rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
               <Image
-                src="/logo22.png"
-                alt="Our modern laboratory"
+                src={OurModernLaboratoryImg}
+                alt="" //
                 width={400}
                 height={280}
                 className="object-contain w-full"
@@ -115,13 +128,17 @@ export function WhyChooseUs() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
                   <feature.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
                 </div>
-                <h3 className="font-semibold text-foreground text-sm mb-1">{feature.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="font-semibold text-foreground text-sm mb-1">
+                  {feature.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

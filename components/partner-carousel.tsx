@@ -1,18 +1,23 @@
 "use client";
 
 import Image from "next/image";
+import partner1 from "../public/partners/Partner11.png";
+import partner2 from "../public/partners/Partner22.png";
+import partner3 from "../public/partners/Partner33.png";
+import partner4 from "../public/partners/Partner44.png";
+import partner5 from "../public/partners/Partner55.png";
 
 const partners = [
-  { name: "partner1", logo: "/partners/partner11.png" },
-  { name: "partner2", logo: "/partners/partner22.png" },
-  { name: "partner3", logo: "/partners/partner33.png" },
-  { name: "partner4", logo: "/partners/partner44.png" },
-  { name: "partner5", logo: "/partners/partner55.png" },
-  { name: "partner1", logo: "/partners/partner11.png" },
-  { name: "partner2", logo: "/partners/partner22.png" },
-  { name: "partner3", logo: "/partners/partner33.png" },
-  { name: "partner4", logo: "/partners/partner44.png" },
-  { name: "partner5", logo: "/partners/partner55.png" },
+  { name: "partner1", logo: partner1 },
+  { name: "partner2", logo: partner2 },
+  { name: "partner3", logo: partner3 },
+  { name: "partner4", logo: partner4 },
+  { name: "partner5", logo: partner5 },
+  { name: "partner1", logo: partner1 },
+  { name: "partner2", logo: partner2 },
+  { name: "partner3", logo: partner3 },
+  { name: "partner4", logo: partner4 },
+  { name: "partner5", logo: partner5 },
 ];
 
 export function PartnerCarousel() {
@@ -33,14 +38,14 @@ export function PartnerCarousel() {
           {[...partners, ...partners].map((partner, index) => (
             <div
               key={index}
-              className="flex-shrink-0 mx-6 px-6 py-2 flex items-center justify-center transition-all duration-500"
+              className="bg-transparent flex-shrink-0 mx-6 px-6 py-2 flex items-center justify-center transition-all duration-500"
             >
               <Image
                 src={partner.logo}
-                alt={partner.name}
+                alt={""}
                 width={100}
                 height={40}
-                className="object-contain h-8 w-auto"
+                className="bg-transparent object-contain h-8 w-auto"
               />
             </div>
           ))}
