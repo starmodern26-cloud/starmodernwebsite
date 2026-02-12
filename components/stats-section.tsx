@@ -81,14 +81,14 @@ export function StatsSection() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
         <Image
-          src="/logo2.jpg"
+          src="/logo22.png"
           alt=""
           width={200}
           height={200}
           className="absolute rounded-2xl -left-10 top-1/2 -translate-y-1/2"
         />
         <Image
-          src="/logo2.jpg"
+          src="/logo22.png"
           alt=""
           width={200}
           height={200}

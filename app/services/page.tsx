@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <section className="pt-32 pb-16 md:pb-24 lg:pb-32 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/modern-medical-laboratory-scientist-analyzing-samp.jpg?height=600&width=1920"
+            src="/modern-medical-laboratory-scientist-analyzing-samp.jpg"
             alt="Laboratory equipment"
             fill
             className="object-cover opacity-15"

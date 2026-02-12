@@ -40,7 +40,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+1 (234) 567-8900", "+1 (234) 567-8901"],
+    details: ["+256 770 570 107", "+256 770 570 107"],
   },
   {
     icon: Mail,
@@ -50,29 +50,29 @@ const contactInfo = [
   {
     icon: Clock,
     title: "Working Hours",
-    details: ["Mon - Sat: 7:00 AM - 9:00 PM", "Sunday: 8:00 AM - 2:00 PM"],
+    details: ["Mon - Sun: 8:00 AM - 10:00 PM"],
   },
 ];
 
 const branches = [
   {
     name: "Main Laboratory",
-    address: "123 Medical Street, Health City, HC 12345",
-    phone: "+1 (234) 567-8900",
-    hours: "Mon-Sat: 7AM-9PM, Sun: 8AM-2PM",
+    address: "P.O.Box 489 | Upper Mulago Hill Road | New Mulago Main Gate Next to First Pharmacy",
+    phone: "+256 770 570 107",
+    hours: "Mon-Sun: 8AM-10PM",
   },
-  {
-    name: "Downtown Branch",
-    address: "456 Central Avenue, Health City, HC 12346",
-    phone: "+1 (234) 567-8902",
-    hours: "Mon-Sat: 8AM-8PM",
-  },
-  {
-    name: "Westside Collection Center",
-    address: "789 West Boulevard, Health City, HC 12347",
-    phone: "+1 (234) 567-8903",
-    hours: "Mon-Fri: 7AM-6PM, Sat: 8AM-2PM",
-  },
+  // {
+  //   name: "Downtown Branch",
+  //   address: "456 Central Avenue, Health City, HC 12346",
+  //   phone: "+1 (234) 567-8902",
+  //   hours: "Mon-Sat: 8AM-8PM",
+  // },
+  // {
+  //   name: "Westside Collection Center",
+  //   address: "789 West Boulevard, Health City, HC 12347",
+  //   phone: "+1 (234) 567-8903",
+  //   hours: "Mon-Fri: 7AM-6PM, Sat: 8AM-2PM",
+  // },
 ];
 
 export default function ContactPage() {
@@ -118,10 +118,10 @@ export default function ContactPage() {
       <section className="pt-24 pb-12 lg:pt-28 lg:pb-16 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="modern-medical-laboratory-scientist-analyzing-samp.jpg?height=400&width=1920"
+            src="/serology-immunology-antibody-test-laboratory.jpg"
             alt="Contact us"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-5"
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -341,7 +341,7 @@ export default function ContactPage() {
                       asChild
                       className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full flex-1 text-sm"
                     >
-                      <a href="tel:+12345678900">
+                      <a href="tel:+256770570107">
                         <Phone className="mr-2 w-4 h-4" />
                         Call 24/7 Helpline
                       </a>

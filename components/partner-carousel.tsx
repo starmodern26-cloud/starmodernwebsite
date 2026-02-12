@@ -3,16 +3,16 @@
 import Image from "next/image";
 
 const partners = [
-  { name: "partner1", logo: "/partners/partner1.png" },
-  { name: "partner2", logo: "/partners/partner2.png" },
-  { name: "partner3", logo: "/partners/partner3.png" },
-  { name: "partner4", logo: "/partners/partner4.png" },
-  { name: "partner5", logo: "/partners/partner5.png" },
-  { name: "partner1", logo: "/partners/partner1.png" },
-  { name: "partner2", logo: "/partners/partner2.png" },
-  { name: "partner3", logo: "/partners/partner3.png" },
-  { name: "partner4", logo: "/partners/partner4.png" },
-  { name: "partner5", logo: "/partners/partner5.png" },
+  { name: "partner1", logo: "/partners/partner11.png" },
+  { name: "partner2", logo: "/partners/partner22.png" },
+  { name: "partner3", logo: "/partners/partner33.png" },
+  { name: "partner4", logo: "/partners/partner44.png" },
+  { name: "partner5", logo: "/partners/partner55.png" },
+  { name: "partner1", logo: "/partners/partner11.png" },
+  { name: "partner2", logo: "/partners/partner22.png" },
+  { name: "partner3", logo: "/partners/partner33.png" },
+  { name: "partner4", logo: "/partners/partner44.png" },
+  { name: "partner5", logo: "/partners/partner55.png" },
 ];
 
 export function PartnerCarousel() {
@@ -36,7 +36,7 @@ export function PartnerCarousel() {
               className="flex-shrink-0 mx-6 px-6 py-2 flex items-center justify-center transition-all duration-500"
             >
               <Image
-                src={partner.logo || "/placeholder.svg"}
+                src={partner.logo}
                 alt={partner.name}
                 width={100}
                 height={40}

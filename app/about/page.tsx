@@ -43,30 +43,30 @@ const values = [
 
 const team = [
   {
-    name: "Dr. Sarah Johnson",
+    name: "Dr. Simon B",
     role: "Chief Pathologist",
     description:
       "20+ years of experience in clinical pathology and laboratory medicine.",
-    image: "/team/doctor1.jpg",
+    image: "/team/team3.png",
   },
   {
-    name: "Dr. Michael Chen",
+    name: "Dr. Mary H",
     role: "Head of Microbiology",
     description:
       "Specialist in infectious diseases and antimicrobial resistance.",
-    image: "/team/doctor2.jpg",
+    image: "/team/team1.png",
   },
   {
-    name: "Dr. Priya Sharma",
+    name: "Dr. Sarah B",
     role: "Clinical Biochemist",
     description: "Expert in metabolic disorders and hormonal analysis.",
-    image: "/team/doctor3.jpg",
+    image: "/team/team2.png",
   },
   {
-    name: "Dr. James Okonkwo",
+    name: "Dr. James O",
     role: "Hematologist",
     description: "Specialist in blood disorders and coagulation studies.",
-    image: "/team/doctor4.jpg",
+    image: "/team/team4.png",
   },
 ];
 

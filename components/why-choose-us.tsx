@@ -77,7 +77,7 @@ export function WhyChooseUs() {
 
             <div className="relative rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
               <Image
-                src="/logo2.jpg"
+                src="/logo22.png"
                 alt="Our modern laboratory"
                 width={400}
                 height={280}

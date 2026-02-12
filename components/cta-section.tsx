@@ -32,14 +32,14 @@ export function CTASection() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
         <Image
-          src="/logo2.jpg"
+          src="/logo22.png"
           alt=""
           width={300}
           height={300}
           className="absolute rounded-2xl -left-20 top-1/2 -translate-y-1/2"
         />
         <Image
-          src="/logo2.jpg"
+          src="/logo22.png"
           alt=""
           width={300}
           height={300}
@@ -70,7 +70,7 @@ export function CTASection() {
               variant="outline"
               className="rounded-full px-6 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent transition-all duration-300"
             >
-              <a href="tel:+12345678900">
+              <a href="tel:+256770570107">
                 <Phone className="mr-2 w-4 h-4" />
                 Call Now
               </a>
@@ -81,7 +81,7 @@ export function CTASection() {
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>2 Locations</span>
+              <span>1 Location</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4" />

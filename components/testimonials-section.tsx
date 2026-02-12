@@ -9,39 +9,39 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    name: "Dr. Amara Okonkwo",
+    name: "Dr. Okello Samuel",
     role: "General Practitioner",
     content:
       "Star Modern has been our go-to diagnostic partner for years. Their accuracy and quick turnaround time have helped us provide better care.",
     rating: 5,
-    image: "/asian-male-patient-professional-headshot.jpg?height=64&width=64",
+    image: "/testimonial1.jpg",
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Ms.Hellen Asiimwe",
     role: "Patient",
     content:
       "I was impressed by how professional and efficient the staff were. The results came faster than expected.",
     rating: 5,
-    image: "/caucasian-female-healthcare-professional-headshot.jpg?height=64&width=64",
+    image: "/testimonial2.jpg",
   },
   {
     id: 3,
-    name: "Sarah Johnson",
+    name: "Mr.David Okiror",
     role: "Healthcare Administrator",
     content:
       "The quality of service at Star Modern is exceptional. Their dedicated team ensures reliable results every time.",
     rating: 5,
-    image: "/asian-male-patient-professional-headshot.jpg?height=64&width=64",
+    image: "/testimonial3.jpg",
   },
   {
     id: 4,
-    name: "David Mensah",
+    name: "Ms.Sarah Nayebale",
     role: "Patient",
     content:
       "Very clean facility with caring staff. They explained every test procedure clearly and made me feel comfortable.",
     rating: 5,
-    image: "/doctor1.jpg?height=64&width=64",
+    image: "/testimonial4.jpg",
   },
 ];
 
