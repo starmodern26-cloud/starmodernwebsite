@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import partner1 from "../public/partners/Partner11.png";
-import partner2 from "../public/partners/Partner22.png";
-import partner3 from "../public/partners/Partner33.png";
-import partner4 from "../public/partners/Partner44.png";
-import partner5 from "../public/partners/Partner55.png";
+import partner1 from "../public/partners/partner1.png";
+import partner2 from "../public/partners/partner2.png";
+import partner3 from "../public/partners/partner3.png";
+import partner4 from "../public/partners/partner4.png";
+import partner5 from "../public/partners/partner5.png";
 
 const partners = [
   { name: "partner1", logo: partner1 },
@@ -13,7 +13,7 @@ const partners = [
   { name: "partner3", logo: partner3 },
   { name: "partner4", logo: partner4 },
   { name: "partner5", logo: partner5 },
-  { name: "partner1", logo: partner1 },
+  // { name: "partner1", logo: partner1 },
   { name: "partner2", logo: partner2 },
   { name: "partner3", logo: partner3 },
   { name: "partner4", logo: partner4 },

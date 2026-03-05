@@ -57,7 +57,8 @@ const contactInfo = [
 const branches = [
   {
     name: "Main Laboratory",
-    address: "P.O.Box 489 | Upper Mulago Hill Road | New Mulago Main Gate Next to First Pharmacy",
+    address:
+      "P.O.Box 489 | Upper Mulago Hill Road | New Mulago Main Gate Next to First Pharmacy",
     phone: "+256 770 570 107",
     hours: "Mon-Sun: 8AM-10PM",
   },
@@ -118,10 +119,10 @@ export default function ContactPage() {
       <section className="pt-24 pb-12 lg:pt-28 lg:pb-16 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/serology-immunology-antibody-test-laboratory.jpg"
+            src="/reception.png"
             alt="Contact us"
             fill
-            className="object-cover opacity-5"
+            className="object-cover opacity-15"
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -388,7 +389,7 @@ export default function ContactPage() {
               >
                 <div className="h-28 relative bg-secondary">
                   <Image
-                    src={`/placeholder.svg?height=112&width=400&query=medical laboratory building exterior modern architecture`}
+                    src={`/interior.png`}
                     alt={`${branch.name} location`}
                     fill
                     className="object-cover opacity-60 group-hover:opacity-80 transition-opacity"
@@ -429,7 +430,7 @@ export default function ContactPage() {
                     className="w-full mt-3 rounded-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-transparent text-sm"
                   >
                     <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(branch.address)}`}
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(branch.address)}&travelmode=driving`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

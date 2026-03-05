@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import OurModernLaboratoryImg from "../public/Logo22.png";
 
 export function CTASection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -32,14 +33,14 @@ export function CTASection() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
         <Image
-          src="/logo22.png"
+          src={OurModernLaboratoryImg}
           alt=""
           width={300}
           height={300}
           className="absolute rounded-2xl -left-20 top-1/2 -translate-y-1/2"
         />
         <Image
-          src="/logo22.png"
+          src={OurModernLaboratoryImg}
           alt=""
           width={300}
           height={300}

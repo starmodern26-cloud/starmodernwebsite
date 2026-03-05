@@ -16,21 +16,21 @@ export function HeroSection() {
       alt: "Professional female doctor in laboratory",
     },
     {
-      src: "/asian-male-patient-professional-headshot.jpg",
+      src: "/reception.png",
       alt: "Lab technician examining blood test tubes",
     },
-    {
-      src: "/caucasian-female-healthcare-professional-headshot.jpg",
-      alt: "Modern diagnostic laboratory with microscope and equipment",
-    },
-    {
-      src: "/hormone-endocrine-thyroid-blood-test-laboratory.jpg",
-      alt: "Scientist performing advanced diagnostic analysis",
-    },
-    {
-      src: "/medical-professional-in-white-coat-holding-test-tu.jpg",
-      alt: "Confident laboratory professional reviewing medical results",
-    },
+    // {
+    //   src: "/",
+    //   alt: "Modern diagnostic laboratory with microscope and equipment",
+    // },
+    // {
+    //   src: "/",
+    //   alt: "Scientist performing advanced diagnostic analysis",
+    // },
+    // {
+    //   src: "/",
+    //   alt: "Confident laboratory professional reviewing medical results",
+    // },
   ];
 
   useEffect(() => {
@@ -150,9 +150,9 @@ export function HeroSection() {
                   <p className="text-sm font-medium text-foreground">
                     99.8% Accuracy
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  {/* <p className="text-xs text-muted-foreground">
                     ISO certified lab
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

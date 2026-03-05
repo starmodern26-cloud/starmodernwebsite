@@ -153,9 +153,9 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-sm overflow-hidden shadow-2xl">
                 <Image
-                  src="/modern-medical-laboratory-scientist-analyzing-samp.jpg?height=500&width=600"
+                  src="/reception.png"
                   alt="Our laboratory team"
                   width={600}
                   height={500}
@@ -163,7 +163,7 @@ export default function AboutPage() {
                 />
               </div>
               {/* Certifications badge */}
-              <div className="absolute -bottom-6 -right-6 bg-background rounded-2xl shadow-lg p-4 border border-border max-w-[200px]">
+              {/* <div className="absolute -bottom-6 -right-6 bg-background rounded-2xl shadow-lg p-4 border border-border max-w-[200px]">
                 <p className="text-xs text-muted-foreground mb-2">
                   Certifications
                 </p>
@@ -178,7 +178,7 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -266,65 +266,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* -------------------------------------- Content between to be worked upon ------------------------------- */}
-      {/* Our Journey */}
-      {/* <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-              Our Journey
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              A Decade of Growth
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Key milestones that have shaped our journey of excellence.
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline line */}
-      {/* <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/20 hidden md:block" />
-
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col md:flex-row items-center gap-4 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  <div
-                    className={`md:w-1/2 ${
-                      index % 2 === 0
-                        ? "md:text-right md:pr-12"
-                        : "md:text-left md:pl-12"
-                    }`}
-                  >
-                    <div
-                      className={`inline-block bg-secondary rounded-2xl p-6 hover:shadow-lg transition-shadow ${
-                        index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-2xl">{milestone.icon}</span>
-                        <p className="text-2xl font-bold text-primary">
-                          {milestone.year}
-                        </p>
-                      </div>
-                      <p className="text-muted-foreground">{milestone.event}</p>
-                    </div>
-                  </div>
-                  <div className="relative z-10 w-4 h-4 rounded-full bg-primary hidden md:block ring-4 ring-primary/20" />
-                  <div className="md:w-1/2" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* -------------------------------------- Content between to be worked upon ------------------------------- */}
-
       {/* Cutting-Edge Equipment */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -363,12 +304,12 @@ export default function AboutPage() {
               {
                 name: "Microscope",
                 description: "High-resolution imaging for detailed analysis.",
-                image: "/equipment/microscope.jpg",
+                image: "/equipment/microscope.png",
               },
               {
                 name: "Centrifuge",
                 description: "Efficient sample separation.",
-                image: "/equipment/centrifuge.jpg",
+                image: "/equipment/centrifuge.png",
               },
               {
                 name: "Urine Analyzer",

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { Users, Microscope, Award, Clock } from "lucide-react"
+import OurModernLaboratoryImg from "../public/Logo22.png";
 
 const stats = [
   {
@@ -81,14 +82,14 @@ export function StatsSection() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
         <Image
-          src="/logo22.png"
+          src={OurModernLaboratoryImg}
           alt=""
           width={200}
           height={200}
           className="absolute rounded-2xl -left-10 top-1/2 -translate-y-1/2"
         />
         <Image
-          src="/logo22.png"
+          src={OurModernLaboratoryImg}
           alt=""
           width={200}
           height={200}
