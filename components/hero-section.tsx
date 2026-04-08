@@ -15,10 +15,10 @@ export function HeroSection() {
       src: "/african-female-doctor-professional-headshot.jpg",
       alt: "Professional female doctor in laboratory",
     },
-    {
-      src: "/reception.png",
-      alt: "Lab technician examining blood test tubes",
-    },
+    // {
+    //   src: "/reception.png",
+    //   alt: "",
+    // },
     // {
     //   src: "/",
     //   alt: "Modern diagnostic laboratory with microscope and equipment",

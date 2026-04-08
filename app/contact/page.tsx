@@ -40,7 +40,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+256 770 570 107", "+256 770 570 107"],
+    details: ["+256 785 073 852", "+256 703 652 214"],
   },
   {
     icon: Mail,
@@ -59,7 +59,7 @@ const branches = [
     name: "Main Laboratory",
     address:
       "P.O.Box 489 | Upper Mulago Hill Road | New Mulago Main Gate Next to First Pharmacy",
-    phone: "+256 770 570 107",
+    phone: "+256 785 073 852",
     hours: "Mon-Sun: 8AM-10PM",
   },
   // {
@@ -342,7 +342,7 @@ export default function ContactPage() {
                       asChild
                       className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full flex-1 text-sm"
                     >
-                      <a href="tel:+256770570107">
+                      <a href="tel:+256785073852">
                         <Phone className="mr-2 w-4 h-4" />
                         Call 24/7 Helpline
                       </a>

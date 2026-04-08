@@ -1,23 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import partner1 from "../public/partners/partner1.png";
-import partner2 from "../public/partners/partner2.png";
-import partner3 from "../public/partners/partner3.png";
-import partner4 from "../public/partners/partner4.png";
-import partner5 from "../public/partners/partner5.png";
 
 const partners = [
-  { name: "partner1", logo: partner1 },
-  { name: "partner2", logo: partner2 },
-  { name: "partner3", logo: partner3 },
-  { name: "partner4", logo: partner4 },
-  { name: "partner5", logo: partner5 },
-  // { name: "partner1", logo: partner1 },
-  { name: "partner2", logo: partner2 },
-  { name: "partner3", logo: partner3 },
-  { name: "partner4", logo: partner4 },
-  { name: "partner5", logo: partner5 },
+  { name: "partner1", logo: "/partners/partner1.png" },
+  { name: "partner2", logo: "/partners/partner2.png" },
+  { name: "partner3", logo: "/partners/partner3.png" },
+  { name: "partner4", logo: "/partners/partner4.png" },
+  { name: "partner5", logo: "/partners/partner5.png" },
+  { name: "partner2", logo: "/partners/partner2.png" },
+  { name: "partner3", logo: "/partners/partner3.png" },
+  { name: "partner4", logo: "/partners/partner4.png" },
+  { name: "partner5", logo: "/partners/partner5.png" },
 ];
 
 export function PartnerCarousel() {
@@ -42,7 +36,7 @@ export function PartnerCarousel() {
             >
               <Image
                 src={partner.logo}
-                alt={""}
+                alt={partner.name}
                 width={100}
                 height={40}
                 className="bg-transparent object-contain h-8 w-auto"

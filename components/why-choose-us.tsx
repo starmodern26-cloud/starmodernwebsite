@@ -13,12 +13,12 @@ import {
 import OurModernLaboratoryImg from "../public/Logo22.png";
 
 const features = [
-  {
-    icon: Award,
-    title: "Accredited Laboratory",
-    description:
-      "ISO 15189 certified with internationally recognized standards.",
-  },
+  // {
+  //   icon: Award,
+  //   title: "Accredited Laboratory",
+  //   description:
+  //     "ISO 15189 certified with internationally recognized standards.",
+  // },
   {
     icon: Microscope,
     title: "Advanced Technology",
