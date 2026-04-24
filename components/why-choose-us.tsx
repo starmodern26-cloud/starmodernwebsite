@@ -47,7 +47,7 @@ const features = [
 ];
 
 export function WhyChooseUs() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {

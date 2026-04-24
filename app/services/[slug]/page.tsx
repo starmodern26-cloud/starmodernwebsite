@@ -52,9 +52,11 @@ export default async function ServiceDetailPage({
       <section className="pt-24 md:pt-32 pb-12 md:pb-16 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={service.image || "/placeholder.svg"}
+            src={service.image}
             alt={service.title}
             fill
+            loading="eager"
+            priority
             className="object-cover opacity-10"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/95 to-secondary/80" />
@@ -106,7 +108,7 @@ export default async function ServiceDetailPage({
                   variant="outline"
                   className="rounded-full px-6 md:px-8 text-sm md:text-base bg-transparent"
                 >
-                  <a href="tel:+12345678900">
+                  <a href="tel:+256770570107">
                     <Phone className="mr-2 w-4 h-4 md:w-5 md:h-5" />
                     Call for Info
                   </a>
@@ -117,10 +119,12 @@ export default async function ServiceDetailPage({
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-xl border border-green-600">
                 <Image
-                  src={service.image || "/placeholder.svg"}
+                  src={service.image}
                   alt={service.title}
                   width={600}
                   height={400}
+                  loading="eager"
+                  priority
                   className="object-cover w-full h-auto"
                 />
               </div>
@@ -245,7 +249,7 @@ export default async function ServiceDetailPage({
                       variant="outline"
                       className="w-full rounded-full bg-transparent mt-3 text-sm md:text-base"
                     >
-                      <a href="tel:+12345678900">Call: +1 (234) 567-8900</a>
+                      <a href="tel:+256770570107">Call: +256 770 570 107</a>
                     </Button>
                   </div>
                 </CardContent>
@@ -285,15 +289,9 @@ export default async function ServiceDetailPage({
                   </th>
                   <th
                     scope="col"
-                    className="px-4 py-3 text-center text-xs md:text-sm font-medium text-foreground uppercase tracking-wider hidden md:table-cell"
-                  >
-                    Turnaround
-                  </th>
-                  <th
-                    scope="col"
                     className="px-4 py-3 text-right text-xs md:text-sm font-medium text-foreground uppercase tracking-wider"
                   >
-                    Price (UGX)
+                    Turnaround
                   </th>
                 </tr>
               </thead>
@@ -311,11 +309,8 @@ export default async function ServiceDetailPage({
                         {test.code}
                       </Badge>
                     </td>
-                    <td className="px-4 py-3 md:py-4 text-center text-xs md:text-sm text-muted-foreground hidden md:table-cell whitespace-nowrap">
+                    <td className="px-4 py-3 md:py-4 text-right text-xs md:text-sm text-muted-foreground whitespace-nowrap">
                       {test.turnaround}
-                    </td>
-                    <td className="px-4 py-3 md:py-4 text-right text-xs md:text-sm font-medium text-primary whitespace-nowrap">
-                      {test.price}
                     </td>
                   </tr>
                 ))}
@@ -324,8 +319,7 @@ export default async function ServiceDetailPage({
           </div>
 
           <p className="text-center text-xs md:text-sm text-muted-foreground mt-6">
-            * Prices may vary. Please contact us for the most current pricing
-            and package deals.
+            Contact us for current pricing and package deals tailored to your needs.
           </p>
         </div>
       </section>

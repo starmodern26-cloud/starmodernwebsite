@@ -106,12 +106,6 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/placeholder.svg?height=800&width=1920"
-            alt="Star Modern team"
-            fill
-            className="object-cover opacity-10"
-          />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/95 to-secondary/80" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -153,32 +147,17 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="rounded-sm overflow-hidden shadow-2xl">
+              <div className="rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-6 sm:p-10 flex items-center justify-center min-h-[360px]">
                 <Image
-                  src="/reception.png"
-                  alt="Our laboratory team"
+                  src="/Logo22.png"
+                  alt="Star Modern Diagnostic Laboratory"
                   width={600}
                   height={500}
-                  className="object-cover w-full"
+                  loading="eager"
+                  priority
+                  className="object-contain w-full h-auto max-w-md"
                 />
               </div>
-              {/* Certifications badge */}
-              {/* <div className="absolute -bottom-6 -right-6 bg-background rounded-2xl shadow-lg p-4 border border-border max-w-[200px]">
-                <p className="text-xs text-muted-foreground mb-2">
-                  Certifications
-                </p>
-                <div className="flex items-center gap-2">
-                  <Award className="w-8 h-8 text-primary" />
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      ISO 15189
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Accredited Lab
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -319,7 +298,7 @@ export default function AboutPage() {
               {
                 name: "Electrolyte Analyzer",
                 description: "Fast and precise electrolyte measurements.",
-                image: "/equipment/Electrolyte-analyzer.jpg",
+                image: "/equipment/electrolyte-analyzer.jpg",
               },
             ].map((equipment, index) => (
               <Card

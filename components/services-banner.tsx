@@ -13,7 +13,7 @@ import { servicesData } from "@/lib/services-data"
 import { useEffect, useRef, useState } from "react"
 
 export function ServicesBanner() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {

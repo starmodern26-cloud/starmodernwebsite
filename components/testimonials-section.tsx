@@ -47,7 +47,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -131,12 +131,11 @@ export function TestimonialsSection() {
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 rounded-full bg-primary/10 mb-3 overflow-hidden">
                     <Image
-                      src={
-                        testimonials[currentIndex].image || "/placeholder.svg"
-                      }
+                      src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
                       width={56}
                       height={56}
+                      loading="eager"
                       className="w-full h-full object-cover"
                     />
                   </div>

@@ -8,7 +8,7 @@ import Image from "next/image"
 import OurModernLaboratoryImg from "../public/Logo22.png";
 
 export function CTASection() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
