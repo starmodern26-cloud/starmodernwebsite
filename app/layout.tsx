@@ -1,10 +1,27 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Plus_Jakarta_Sans, Space_Grotesk, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta-sans",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Star Modern Diagnostic Laboratory | Pioneering Healthcare Diagnostics",
@@ -46,7 +63,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#228B22",
+  themeColor: "#0c6b4d",
   width: "device-width",
   initialScale: 1,
 }
@@ -58,7 +75,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body
+        className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased`}
+      >
         {children}
       </body>
     </html>

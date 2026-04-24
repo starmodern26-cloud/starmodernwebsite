@@ -25,6 +25,7 @@ import {
   Send,
   CheckCircle2,
   MessageSquare,
+  AlertCircle,
 } from "lucide-react";
 import { servicesData } from "@/lib/services-data";
 
@@ -64,6 +65,24 @@ const branches = [
   },
 ];
 
+/**
+ * Contact form delivery
+ * --------------------------------------------------------
+ * Submissions go to your inbox via Web3Forms (free, no backend).
+ *
+ * 1. Get a free access key at https://web3forms.com (takes ~30 seconds).
+ * 2. Open `.env.local` (or `.env.production`) and set:
+ *      NEXT_PUBLIC_WEB3FORMS_KEY=your-access-key-here
+ * 3. Rebuild with `npm run build`. Done.
+ *
+ * If the key isn't set, the form falls back to opening the user's email
+ * client with a pre-filled message so the site is never broken.
+ * --------------------------------------------------------
+ */
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+const FALLBACK_EMAIL = "info@starmodern.com";
+
 export default function ContactPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -72,25 +91,94 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const resetForm = () =>
+    setFormState({
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
+    setStatus("submitting");
+    setErrorMessage("");
+
+    // Fallback: no Web3Forms key configured → open mail client
+    if (!WEB3FORMS_KEY) {
+      const subject = encodeURIComponent(
+        `Website inquiry from ${formState.name || "a visitor"}`,
+      );
+      const body = encodeURIComponent(
+        `Name: ${formState.name}\n` +
+          `Email: ${formState.email}\n` +
+          `Phone: ${formState.phone}\n` +
+          `Service: ${formState.service || "General Inquiry"}\n\n` +
+          `${formState.message}`,
+      );
+      window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${subject}&body=${body}`;
+      setStatus("success");
+      setTimeout(() => {
+        setStatus("idle");
+        resetForm();
+      }, 5000);
+      return;
+    }
+
+    try {
+      const selectedService =
+        servicesData.find((s) => s.id === formState.service)?.title ||
+        formState.service ||
+        "General Inquiry";
+
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: `New website inquiry: ${selectedService}`,
+        from_name: "Star Modern Diagnostic Laboratory Website",
+        name: formState.name,
+        email: formState.email,
+        phone: formState.phone,
+        service: selectedService,
+        message: formState.message,
+        botcheck: "", // honeypot
+      };
+
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-    }, 5000);
+
+      const data = await res.json();
+      if (!res.ok || !data?.success) {
+        throw new Error(
+          data?.message ||
+            "Could not send your message right now. Please try again.",
+        );
+      }
+
+      setStatus("success");
+      setTimeout(() => {
+        setStatus("idle");
+        resetForm();
+      }, 6000);
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or call us directly.",
+      );
+    }
   };
 
   const handleChange = (
@@ -98,6 +186,9 @@ export default function ContactPage() {
   ) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const isSubmitting = status === "submitting";
+  const isSubmitted = status === "success";
 
   return (
     <main className="min-h-screen">
@@ -139,7 +230,7 @@ export default function ContactPage() {
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
-                className="text-center border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+                className="text-center border-border hover:border-primary/40 hover:shadow-md transition-all duration-300 group"
               >
                 <CardContent className="p-5">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
@@ -165,7 +256,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Contact Form */}
-            <Card className="border-border">
+            <Card className="border-border shadow-sm">
               <CardHeader className="pb-4">
                 <CardTitle className="text-xl">Send Us a Message</CardTitle>
                 <p className="text-sm text-muted-foreground">
@@ -181,12 +272,22 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Message Sent!
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Thank you for contacting us.
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                      Thank you for contacting Star Modern. We&apos;ll get back
+                      to you within 24 hours.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Honeypot — hidden from real users */}
+                    <input
+                      type="checkbox"
+                      name="botcheck"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      style={{ display: "none" }}
+                    />
+
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-sm">
@@ -199,7 +300,7 @@ export default function ContactPage() {
                           value={formState.name}
                           onChange={handleChange}
                           required
-                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/20"
+                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/30"
                         />
                       </div>
                       <div className="space-y-2">
@@ -214,7 +315,7 @@ export default function ContactPage() {
                           value={formState.email}
                           onChange={handleChange}
                           required
-                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/20"
+                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/30"
                         />
                       </div>
                     </div>
@@ -230,7 +331,7 @@ export default function ContactPage() {
                           placeholder="+(256) 754-867-980"
                           value={formState.phone}
                           onChange={handleChange}
-                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/20"
+                          className="transition-all duration-300 focus:ring-2 focus:ring-primary/30"
                         />
                       </div>
                       <div className="space-y-2">
@@ -274,13 +375,21 @@ export default function ContactPage() {
                         value={formState.message}
                         onChange={handleChange}
                         required
-                        className="transition-all duration-300 focus:ring-2 focus:ring-primary/20"
+                        className="transition-all duration-300 focus:ring-2 focus:ring-primary/30"
                       />
                     </div>
+
+                    {status === "error" && (
+                      <div className="flex items-start gap-2 rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2 text-sm text-destructive">
+                        <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300 hover:scale-[1.02]"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg"
                     >
                       {isSubmitting ? (
                         <>
@@ -294,6 +403,10 @@ export default function ContactPage() {
                         </>
                       )}
                     </Button>
+
+                    <p className="text-xs text-muted-foreground text-center pt-1">
+                      We respect your privacy. Your information is never shared.
+                    </p>
                   </form>
                 )}
               </CardContent>
@@ -301,7 +414,7 @@ export default function ContactPage() {
 
             {/* Map & Quick Contact */}
             <div className="space-y-4">
-              <Card className="border-border overflow-hidden">
+              <Card className="border-border overflow-hidden shadow-sm">
                 <div className="aspect-[16/10] relative">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.74996448979!2d32.5743260737194!3d0.3353895639991775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb0026d0c99d%3A0xedc9b5619a74dd74!2sStar%20Modern%20Diagnostics!5e0!3m2!1sen!2sug!4v1770384963328!5m2!1sen!2sug"
@@ -317,7 +430,7 @@ export default function ContactPage() {
               </Card>
 
               {/* Quick Contact Options */}
-              <Card className="border-primary/20 bg-primary/5">
+              <Card className="border-primary/30 bg-primary/5 shadow-sm">
                 <CardContent className="p-5">
                   <h3 className="text-base font-semibold text-card-foreground mb-3">
                     Need Urgent Assistance?
@@ -341,7 +454,7 @@ export default function ContactPage() {
                       variant="outline"
                       className="rounded-full flex-1 bg-transparent text-sm"
                     >
-                      <a href="mailto:emergency@starmodern.com">
+                      <a href="mailto:info@starmodern.com">
                         <Mail className="mr-2 w-4 h-4" />
                         Email Us
                       </a>
@@ -354,7 +467,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Branch Locations – centered when fewer cards */}
+      {/* Branch Locations */}
       <section className="py-12 lg:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -369,12 +482,11 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Centered branches with flex + justify-center */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {branches.map((branch, index) => (
               <Card
                 key={index}
-                className="w-full max-w-sm border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group overflow-hidden"
+                className="w-full max-w-sm border-border hover:border-primary/40 hover:shadow-md transition-all duration-300 group overflow-hidden"
               >
                 <div className="h-28 relative bg-secondary">
                   <Image
